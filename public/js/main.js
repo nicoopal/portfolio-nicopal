@@ -39,7 +39,7 @@
     $$('[data-en]').forEach((e) => { const v = e.getAttribute(l === 'en' ? 'data-en' : 'data-es'); if (v !== null && e.innerHTML !== v) e.innerHTML = v; });
     $('#lang').textContent = l === 'en' ? 'ES' : 'EN';
     $('#lang').setAttribute('aria-label', l === 'en' ? 'Cambiar a español' : 'Switch to English');
-    document.title = l === 'en' ? 'Nico Palermo · Portfolio' : 'Nico Palermo · Portfolio';
+    document.title = l === 'en' ? 'Nicolás Palermo · Portfolio' : 'Nicolás Palermo · Portfolio';
     if (save) { try { localStorage.setItem('lang', l); } catch (e) { /* sin storage */ } }
     document.dispatchEvent(new Event('langchange'));
   }
