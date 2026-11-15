@@ -32,6 +32,37 @@
     return `<a class="tile ${p.skin}" href="#p-${id}">${B([p.kind[0].split(' · ')[0], p.kind[1].split(' · ')[0]], 'small')}${B(p.short)}<u></u></a>`;
   }).join('');
 
+  /* ───── Tira de proyectos: desfila sola, en loop ───── */
+  (function autoTape() {
+    const tape = $('#tape');
+    if (!tape || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const orig = [...tape.children];
+    orig.forEach((t) => { const c = t.cloneNode(true); c.setAttribute('aria-hidden', 'true'); c.tabIndex = -1; tape.appendChild(c); });
+    tape.classList.add('auto');
+    const loopW = () => tape.children[orig.length].offsetLeft - tape.children[0].offsetLeft;
+    const SPEED = 0.03; // px por ms (~30px/s)
+    let pos = 0, paused = false, dragging = false, last = performance.now(), sx = 0, sp = 0, moved = 0, resumeAt = 0;
+    const wrap = () => { const w = loopW(); if (w > 0) pos = ((pos % w) + w) % w; tape.scrollLeft = pos; };
+    function frame(now) {
+      const dt = Math.min(now - last, 400); last = now;
+      if (!paused && !dragging && now > resumeAt) { pos += dt * SPEED; wrap(); }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+    tape.addEventListener('mouseenter', () => { paused = true; });
+    tape.addEventListener('mouseleave', () => { paused = false; });
+    tape.addEventListener('focusin', () => { paused = true; });
+    tape.addEventListener('focusout', () => { paused = false; });
+    // arrastrar con el mouse / rueda / touch
+    tape.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') return; dragging = true; moved = 0; sx = e.clientX; sp = pos; });
+    addEventListener('pointermove', (e) => { if (!dragging) return; const d = e.clientX - sx; moved = Math.max(moved, Math.abs(d)); if (moved > 4) tape.classList.add('drag'); pos = sp - d; wrap(); });
+    addEventListener('pointerup', () => { if (!dragging) return; dragging = false; setTimeout(() => tape.classList.remove('drag'), 0); });
+    tape.addEventListener('click', (e) => { if (moved > 4) { e.preventDefault(); moved = 0; } }, true);
+    tape.addEventListener('dragstart', (e) => e.preventDefault());
+    tape.addEventListener('wheel', (e) => { const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : 0; if (d) { e.preventDefault(); pos += d; wrap(); } }, { passive: false });
+    tape.addEventListener('scroll', () => { if (Math.abs(tape.scrollLeft - pos) > 2) { pos = tape.scrollLeft; resumeAt = performance.now() + 1500; wrap(); } }, { passive: true });
+  })();
+
   /* ───── Idioma ───── */
   $$('[data-en]').forEach((e) => { if (!e.hasAttribute('data-es')) e.setAttribute('data-es', e.innerHTML); });
   function setLang(l, save) {

@@ -109,6 +109,9 @@ canvas { display: block; }
 .tape-wrap { position: relative; margin-top: clamp(20px, 4vh, 44px); border-top: 1px solid var(--line); }
 .tape { display: flex; gap: 10px; overflow-x: auto; padding: 18px var(--gut) 26px; scrollbar-width: none; scroll-snap-type: x proximity; }
 .tape::-webkit-scrollbar { display: none; }
+.tape.auto { scroll-snap-type: none; padding-left: 0; padding-right: 0; cursor: grab; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.tape.auto.drag { cursor: grabbing; user-select: none; }
+.tape.auto.drag .tile { pointer-events: none; }
 .tile {
   flex: 0 0 auto; scroll-snap-align: start;
   width: 152px; height: 96px; border-radius: var(--p-radius, 10px);
