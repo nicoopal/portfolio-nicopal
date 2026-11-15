@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nico Palermo · Portfolio</title>
+  <meta name="description" content="Quince proyectos de software, la mayoría privados, contados por dentro: conciliadores contables, tableros, apps de escritorio, IA aplicada y experimentos web.">
+  <meta property="og:title" content="Nico Palermo · Portfolio">
+  <meta property="og:description" content="15 proyectos. 12 privados. Todos explicados, con demos que se pueden tocar.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://portfolio-nicopal.web.app/">
+  <meta name="theme-color" content="#0d0c0a">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d0c0a'/%3E%3Cpath d='M9 23V9l14 14V9' fill='none' stroke='%23d6ff3f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;800&family=DM+Serif+Display&family=Geist:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500&family=Quicksand:wght@500;700&family=Space+Grotesk:wght@500;700&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip" href="#proyectos" data-en="Skip to projects">Saltar a los proyectos</a>
+  <div class="progress" aria-hidden="true"><i></i></div>
+
+  <header class="nav">
+    <a class="brand" href="#top">nico palermo<b>.</b></a>
+    <nav aria-label="Principal">
+      <a href="#proyectos" data-en="Projects">Proyectos</a>
+      <a class="opt" href="#metodo" data-en="How I work">Cómo trabajo</a>
+      <a class="opt" href="#contacto" data-en="Contact">Contacto</a>
+      <button class="lang" id="lang" type="button" aria-label="Switch to English">EN</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <p class="kicker rise"><i></i><span data-en="Nico Palermo · Buenos Aires">Nico Palermo · Buenos Aires</span></p>
+            <h1 class="rise" style="--d:.08s" data-en="The tools my job needed, <em>I ended up building myself.</em>">Las herramientas que mi trabajo necesitaba <em>las terminé construyendo yo.</em></h1>
+          </div>
+          <div class="hero-side rise" style="--d:.22s">
+            <p data-en="I work in financial operations. When a spreadsheet stops being enough, I build the software: <strong>accounting reconcilers, control dashboards, desktop apps</strong> and the odd late-night toy. Almost all of it lives in private repositories, so here it is told from the inside.">Trabajo en operaciones financieras. Cuando una planilla ya no alcanza, armo el software: <strong>conciliadores contables, tableros de control, apps de escritorio</strong> y algún juguete de madrugada. Casi todo vive en repositorios privados, así que acá lo cuento por dentro.</p>
+            <div class="cta">
+              <a class="btn primary" href="#proyectos" data-en="See the projects">Ver los proyectos</a>
+              <a class="btn" href="https://github.com/nicoopal" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="hero-write rise" style="--d:.34s"><canvas id="heroWrite" role="img" aria-label="15 proyectos. 12 privados. Todos explicados."></canvas></div>
+      </div>
+      <div class="tape-wrap rise" style="--d:.46s">
+        <nav class="tape" id="tape" aria-label="Índice de proyectos"></nav>
+      </div>
+    </section>
+
+    <div id="proyectos"><div id="chapters"></div></div>
+
+    <section class="method" id="metodo">
+      <div class="wrap">
+        <h2 class="rise" data-en="How <em>I work.</em>">Cómo <em>trabajo.</em></h2>
+        <div class="principles rise">
+          <article class="big">
+            <h3 data-en="I direct agents; I don't type every line.">Dirijo agentes, no tipeo cada línea.</h3>
+            <p data-en="I build with AI coding agents as my development team. <strong>I define the problem, the architecture and the acceptance criteria;</strong> I review, test against real cases and ship to production. Several of these repositories include their own skills and guides so the agent works in a repeatable way, and one experiment hands it the canvas entirely.">Construyo con agentes de IA como equipo de desarrollo. <strong>Yo defino el problema, la arquitectura y los criterios de aceptación;</strong> reviso, pruebo contra casos reales y pongo en producción. Varios de estos repositorios incluyen sus propios skills y guías para que el agente trabaje de forma repetible, y un experimento le entrega el lienzo entero.</p>
+          </article>
+          <article>
+            <h3 data-en="Validated against reality.">Validado contra la realidad.</h3>
+            <p data-en="The reconciler was developed against hand-made deliverables, cell by cell. Invisipal has 166 tests. A rule with no errors still opens showing every row, because &quot;no errors&quot; is not the same as &quot;correct&quot;.">El conciliador se desarrolló contra entregables hechos a mano, celda por celda. Invisipal tiene 166 tests. Una regla sin errores igual abre mostrando todas las filas, porque "sin errores" no es lo mismo que "correcto".</p>
+          </article>
+          <article>
+            <h3 data-en="Zero cost, no server when possible.">Costo cero, sin servidor si se puede.</h3>
+            <p data-en="Free tiers, single-file HTML, synced folders instead of backends. Constraints are part of the design, not an excuse.">Capas gratuitas, HTML de un solo archivo, carpetas sincronizadas en lugar de backends. Las restricciones son parte del diseño, no una excusa.</p>
+          </article>
+          <article>
+            <h3 data-en="Privacy by architecture.">Privacidad por arquitectura.</h3>
+            <p data-en="Process on the client, store only aggregates, close everything by default in the database rules. What never leaves the device cannot leak.">Procesar en el cliente, guardar solo agregados, cerrar todo por defecto en las reglas de la base. Lo que nunca sale del dispositivo no se puede filtrar.</p>
+          </article>
+          <article>
+            <h3 data-en="Documented for people who don't code.">Documentado para quien no programa.</h3>
+            <p data-en="Searchable manuals, step-by-step install guides, installers that need no admin rights. A tool only exists if the team can actually use it.">Manuales con buscador, guías de instalación paso a paso, instaladores que no piden permisos de administrador. Una herramienta existe recién cuando el equipo la puede usar.</p>
+          </article>
+        </div>
+
+        <div class="skills rise">
+          <div class="skill"><h3 data-en="Web">Web</h3><ul><li>React 19</li><li>TypeScript</li><li>Vite</li><li>JavaScript vanilla</li><li>Canvas 2D</li><li>SVG procedural</li><li>Web Audio</li><li>PWA</li><li>IndexedDB</li></ul></div>
+          <div class="skill"><h3 data-en="Cloud and backend">Nube y backend</h3><ul><li>Firebase Auth</li><li>Firestore</li><li>Cloud Functions</li><li>Storage</li><li>Hosting</li><li>Security Rules</li><li>FastAPI</li><li>Docker</li><li>Caddy</li><li>GitHub Actions</li></ul></div>
+          <div class="skill"><h3 data-en="Finance and data">Finanzas y datos</h3><ul><li>Excel LET / LAMBDA</li><li>PowerShell</li><li>SQL · ODBC</li><li>ExcelJS</li><li>SheetJS</li><li data-en="Accounts payable">Cuentas a pagar</li><li data-en="Reconciliation">Conciliación</li></ul></div>
+          <div class="skill"><h3 data-en="Desktop">Escritorio</h3><ul><li>Python</li><li>Win32 · ctypes</li><li>PySide6</li><li>tkinter</li><li>PyInstaller</li><li>Inno Setup</li><li>MSIX</li><li>pytest</li></ul></div>
+          <div class="skill"><h3 data-en="Applied AI">IA aplicada</h3><ul><li>Gemini API</li><li>Embeddings</li><li>RAG</li><li data-en="Structured extraction from PDF">Extracción estructurada de PDF</li><li data-en="Agent direction">Dirección de agentes</li><li>Claude Code skills</li><li>TensorFlow.js</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto">
+      <div class="wrap">
+        <h2 class="rise" data-en="Got a process stuck <em>in a spreadsheet?</em>">¿Tenés un proceso trabado <em>en una planilla?</em></h2>
+        <p class="rise" data-en="That is exactly where I like to start. The three open source projects are on GitHub; I can walk you through the private ones.">Es justo donde me gusta empezar. Los tres proyectos de código abierto están en GitHub; los privados te los puedo mostrar en una llamada.</p>
+        <div class="cta rise">
+          <a class="btn primary" href="https://github.com/nicoopal" target="_blank" rel="noopener">github.com/nicoopal ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p data-en="The private projects are described without data, names or confidential logic. Every demo runs on made-up data and is drawn in code on this page.">Los proyectos privados están descriptos sin datos, nombres ni lógica confidencial. Todas las demos usan datos inventados y están dibujadas por código en esta misma página.</p>
+      <p data-en="HTML, CSS and JavaScript, no framework and no build. Handwriting glyphs: EMS Tech, SIL Open Font License.">HTML, CSS y JavaScript, sin framework ni build. Trazos de escritura: EMS Tech, SIL Open Font License.</p>
+    </div>
+  </footer>
+
+  <script src="js/strokefont.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/demos.js"></script>
+  <script src="js/main.js"></script>
+  <script type="module">
+    // Analytics de Firebase (config pública del proyecto portfolio-nicopal)
+    try {
+      const { initializeApp } = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js');
+      const { getAnalytics, isSupported } = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js');
+      const app = initializeApp({
+        apiKey: 'AIzaSyCcle3sGhXwCAm0mwHt2ZN5zkAhwBgbX74',
+        authDomain: 'portfolio-nicopal.firebaseapp.com',
+        projectId: 'portfolio-nicopal',
+        storageBucket: 'portfolio-nicopal.firebasestorage.app',
+        messagingSenderId: '105746923944',
+        appId: '1:105746923944:web:5aab960fff7bebee4e1d9d',
+        measurementId: 'G-0SKCYDHL1T'
+      });
+      if (location.hostname !== 'localhost' && await isSupported()) getAnalytics(app);
+    } catch (e) { /* la página funciona igual sin analytics */ }
+  </script>
+</body>
+</html>
