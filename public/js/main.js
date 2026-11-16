@@ -9,7 +9,7 @@
   function panel(id) {
     const p = P[id];
     const cls = ['panel', p.skin, p.half ? 'half' : '', p.flip ? 'flip' : ''].join(' ');
-    const meta = `<div class="meta">${B(p.kind)}${p.link ? `<a href="${p.link}" target="_blank" rel="noopener">${B(['Código abierto ↗', 'Open source ↗'])}</a>` : ''}</div>`;
+    const meta = `<div class="meta">${B(p.kind)}${p.link ? `<a href="${p.link}" target="_blank" rel="noopener">${B(['Código abierto ↗', 'Open source ↗'])}</a>` : ''}${p.live ? `<a href="${p.live}" target="_blank" rel="noopener">${B(['Probalo en vivo ↗', 'Try it live ↗'])}</a>` : ''}</div>`;
     if (p.also) {
       return `<article class="${cls}" id="p-${id}"><div class="copy">${meta}<div class="also">${p.also.map((a) => `<article>${B(a[0], 'h4')}${B(a[1], 'p')}</article>`).join('')}</div></div></article>`;
     }
@@ -56,7 +56,10 @@
     // arrastrar con el mouse / rueda / touch
     tape.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') return; dragging = true; moved = 0; sx = e.clientX; sp = pos; });
     addEventListener('pointermove', (e) => { if (!dragging) return; const d = e.clientX - sx; moved = Math.max(moved, Math.abs(d)); if (moved > 4) tape.classList.add('drag'); pos = sp - d; wrap(); });
-    addEventListener('pointerup', () => { if (!dragging) return; dragging = false; setTimeout(() => tape.classList.remove('drag'), 0); });
+    const endDrag = () => { if (!dragging) return; dragging = false; setTimeout(() => tape.classList.remove('drag'), 0); };
+    addEventListener('pointerup', endDrag);
+    addEventListener('pointercancel', endDrag);
+    addEventListener('blur', () => { endDrag(); paused = false; });
     tape.addEventListener('click', (e) => { if (moved > 4) { e.preventDefault(); moved = 0; } }, true);
     tape.addEventListener('dragstart', (e) => e.preventDefault());
     tape.addEventListener('wheel', (e) => { const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : 0; if (d) { e.preventDefault(); pos += d; wrap(); } }, { passive: false });
@@ -99,7 +102,7 @@
   /* ───── Hero: la frase se escribe sola, trazo a trazo ───── */
   const hw = $('#heroWrite');
   if (hw && window.makeWriter) {
-    const w = window.makeWriter(hw, () => (document.documentElement.lang === 'en' ? '15 projects. 12 private. All explained.' : '15 proyectos. 12 privados. Todos explicados.'), { color: '#d6ff3f', cursor: '#ece6da', cursorEdge: '#0d0c0a', max: 96, pad: 6, speed: 620, lw: 0.05 });
+    const w = window.makeWriter(hw, () => (document.documentElement.lang === 'en' ? '16 projects. 13 private. All explained.' : '16 proyectos. 13 privados. Todos explicados.'), { color: '#d6ff3f', cursor: '#ece6da', cursorEdge: '#0d0c0a', max: 96, pad: 6, speed: 620, lw: 0.05 });
     const go = () => setTimeout(() => w.start(), 500);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(go); else go();
   }

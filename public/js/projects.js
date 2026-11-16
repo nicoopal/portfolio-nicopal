@@ -1,6 +1,16 @@
 /* Contenido de los proyectos. Cada texto: [es, en]. Datos de las demos: inventados. */
 window.CHAPTERS = [
   {
+    id: 'origen',
+    eyebrow: ['El origen', 'Where it started'],
+    title: ['El primer proyecto que hice con IA. <em>Todo lo demás salió de acá.</em>', 'The first thing I built with AI. <em>Everything else came from here.</em>'],
+    intro: [
+      'Arrancó con una necesidad de todos los días: desbloquear una planilla, unir dos PDFs, achicar un video, sin subir documentos de trabajo a sitios de terceros. Fue lo primero que construí con Claude, y lo que me mostró que podía hacer yo mismo las herramientas que necesitaba.',
+      'It started with an everyday need: unlock a spreadsheet, merge two PDFs, shrink a video, without uploading work documents to third-party sites. It was the first thing I built with Claude, and what showed me I could make the tools I needed myself.'
+    ],
+    rows: [['kit']]
+  },
+  {
     id: 'trabajo',
     eyebrow: ['En el trabajo', 'At work'],
     title: ['Finanzas y operaciones: <em>donde la planilla ya no alcanzaba.</em>', 'Finance and operations: <em>where the spreadsheet ran out.</em>'],
@@ -33,6 +43,27 @@ window.CHAPTERS = [
 ];
 
 window.PROJECTS = {
+  kit: {
+    skin: 's-kit', short: ['Pals Toolkit', 'Pals Toolkit'],
+    kind: ['Origen · Web', 'Origin · Web'],
+    live: 'https://pals-toolkit.web.app',
+    name: ['Pals Toolkit', 'Pals Toolkit'],
+    tagline: [
+      'Dieciséis herramientas de oficina en una sola página: desbloquear planillas, unir y comprimir PDFs, convertir videos e imágenes. Los archivos nunca salen de tu computadora.',
+      'Sixteen office tools on a single page: unlock spreadsheets, merge and compress PDFs, convert videos and images. Your files never leave your computer.'
+    ],
+    how: [
+      'Un único archivo HTML, sin backend: todo el procesamiento ocurre en el navegador. Tiene nueve temas visuales, de un editorial color hueso a una terminal verde, porque una herramienta propia también puede ser divertida de usar.',
+      'A single HTML file with no backend: all the processing happens in the browser. It has nine visual themes, from bone-coloured editorial to a green terminal, because a tool of your own can also be fun to use.'
+    ],
+    points: [
+      ['<b>Un .xlsx es un ZIP.</b> Para desbloquear las hojas de un Excel o un Word no hace falta adivinar ninguna contraseña: abre el archivo, borra la etiqueta de protección del XML y lo vuelve a armar. El original no se toca.', '<b>An .xlsx is a ZIP.</b> Unlocking the sheets of an Excel or Word file needs no password guessing: it opens the file, removes the protection tag from the XML and zips it back up. The original is never touched.'],
+      ['<b>FFmpeg compilado a WebAssembly.</b> Convierte, comprime y saca GIF con una paleta calculada para cada clip, todo dentro de la pestaña. El video nunca se sube a ningún lado.', '<b>FFmpeg compiled to WebAssembly.</b> It converts, compresses and makes GIFs with a palette computed for each clip, all inside the tab. The video is never uploaded anywhere.'],
+      ['<b>La página trae su propio servidor.</b> Bajar videos necesita algo más que un navegador, así que el HTML lleva adentro un pequeño servidor en Python y los lanzadores para Windows y Mac, y los entrega con un clic.', '<b>The page ships its own server.</b> Downloading videos needs more than a browser, so the HTML carries a small Python server plus launchers for Windows and Mac inside it, and hands them over in one click.']
+    ],
+    stack: ['JavaScript', 'pdf-lib', 'PDF.js', 'JSZip', 'FFmpeg.wasm', 'Python', 'Firebase Hosting'],
+    facts: [['16', ['herramientas', 'tools']], ['9', ['temas visuales', 'visual themes']], ['0', ['archivos subidos', 'files uploaded']]]
+  },
   conc: {
     skin: 's-conc', short: ['Conciliador', 'Reconciler'],
     kind: ['Finanzas · Privado', 'Finance · Private'],

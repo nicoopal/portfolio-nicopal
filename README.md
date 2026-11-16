@@ -1,6 +1,6 @@
 # portfolio-nicopal
 
-Portfolio de Nicolás Palermo: 15 proyectos (12 privados) contados por dentro, con miniaturas interactivas dibujadas por código.
+Portfolio de Nicolás Palermo: 16 proyectos (13 privados) contados por dentro, con miniaturas interactivas dibujadas por código.
 
 - **Sitio:** https://portfolio-nicopal.web.app
 - **Repo:** https://github.com/nicoopal/portfolio-nicopal
@@ -9,16 +9,17 @@ Portfolio de Nicolás Palermo: 15 proyectos (12 privados) contados por dentro, c
 
 ## Qué muestra
 
-Tres capítulos, más una tarjeta breve con tres proyectos extra.
+Cuatro capítulos, más una tarjeta breve con tres proyectos extra.
 
 | Capítulo | Proyectos |
 |---|---|
+| El origen | Pals Toolkit, el primer proyecto hecho con IA |
 | En el trabajo | Conciliador de prepagos, Control de lotes de pago, Asignador de guías, Tablero de salidas |
 | Productos | Invisipal, Handpal, Pals Vault, Pals Downloader, Portal de un equipo legislativo |
 | De madrugada | Zappinglate, Libro para colorear, Estudio de moda, Pals Music, murmur, Portal retro para amigos |
 | Y también | Comparador de precios del hogar, Calendario de prepagos, Libro de memorias familiar |
 
-Solo Invisipal, Handpal y Pals Downloader son públicos y llevan link al código.
+Solo Invisipal, Handpal y Pals Downloader son públicos y llevan link al código. Pals Toolkit tiene el código privado, pero lleva link a la app en vivo.
 
 ## Criterios de contenido
 
@@ -43,6 +44,16 @@ Solo Invisipal, Handpal y Pals Downloader son públicos y llevan link al código
 - **Cambiar un texto fijo** (hero, "Cómo trabajo", contacto): editar `public/index.html`. El español va como contenido y el inglés en el atributo `data-en`.
 - **Agregar un proyecto:** sumar su entrada en `PROJECTS`, ubicar su id en `rows` del capítulo, y definir su piel `s-<id>` en el CSS. La demo es opcional: una función `DEMOS.<id>` en `demos.js`.
 - **Contacto:** los tres botones (email, LinkedIn, GitHub) están en la sección `#contacto` de `index.html`.
+
+## Imagen para compartir
+
+`public/og.png` (1200×630) es la vista previa que muestran LinkedIn, WhatsApp y X al pegar el link. Se genera desde `tools/og.html`: si cambian el titular o la cantidad de proyectos, editar ese archivo y volver a renderizar con Chrome:
+
+```bash
+"C:/Program Files/Google/Chrome/Application/chrome.exe" --headless=new --hide-scrollbars --virtual-time-budget=6000 --window-size=1200,630 --screenshot=public/og.png "file:///C:/apps/Portfolio/tools/og.html"
+```
+
+LinkedIn guarda la vista previa en caché: después de publicar, se refresca desde su Post Inspector.
 
 ## Ver en local
 

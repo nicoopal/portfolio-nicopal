@@ -109,6 +109,49 @@
   const NOTES = {};
   const FAKE = ['Datos inventados para la demo', 'Made-up data for the demo'];
 
+  /* ───────── Pals Toolkit ───────── */
+  NOTES.kit = ['Miniatura de la interfaz real. Elegí una herramienta o cambiá el tema', 'A miniature of the real interface. Pick a tool or switch the theme'];
+  DEMOS.kit = (el) => {
+    const THEMES = [['k-bone', 'Bone'], ['k-term', 'Terminal'], ['k-vapor', 'Vaporwave'], ['k-deco', 'Art Deco'], ['k-gizz', 'King Gizzard']];
+    const TOOLS = [
+      { n: '01', cat: 'Excel', name: ['Desbloquear hojas', 'Unlock sheets'], lock: true, files: [['presupuesto_2026.xlsx', 'budget_2026.xlsx']],
+        steps: [['Abrir el .xlsx como ZIP · 14 archivos', 'Open the .xlsx as a ZIP · 14 files'], ['Quitar &lt;sheetProtection/&gt; de 3 hojas', 'Strip &lt;sheetProtection/&gt; from 3 sheets'], ['Volver a comprimir', 'Zip it back up']],
+        out: ['presupuesto_2026_desbloqueado.xlsx', 'budget_2026_unlocked.xlsx'] },
+      { n: '06', cat: 'PDF', name: ['Unir PDFs', 'Merge PDFs'], files: [['contrato.pdf', 'contract.pdf'], ['anexo.pdf', 'annex.pdf'], ['firmas.pdf', 'signatures.pdf']],
+        steps: [['pdf-lib: copiar 12 páginas', 'pdf-lib: copy 12 pages'], ['En el orden en que los soltaste', 'In the order you dropped them'], ['Guardar sin subir nada', 'Save without uploading anything']],
+        out: ['unido.pdf · 12 páginas', 'merged.pdf · 12 pages'] },
+      { n: '13', cat: 'Video', name: ['Comprimir video', 'Compress video'], files: [['reunion.mov · 84 MB', 'meeting.mov · 84 MB']],
+        steps: [['Cargar FFmpeg en WebAssembly', 'Load FFmpeg as WebAssembly'], ['Recodificar a H.264 en la pestaña', 'Re-encode to H.264 in the tab'], ['84 MB → 11 MB', '84 MB → 11 MB']],
+        out: ['reunion.mp4 · 11 MB', 'meeting.mp4 · 11 MB'] }
+    ];
+    el.innerHTML = `<div class="kit k-bone"><aside class="kit-side"><div class="kit-brand"><b>TOOLKIT</b><small>● LOCAL-FIRST</small></div><ul>${TOOLS.map((t, i) => `<li><button type="button" data-i="${i}"><i>${t.n}</i>${T(t.name[0], t.name[1])}</button></li>`).join('')}<li class="more"><i>+13</i>${T('herramientas más', 'more tools')}</li></ul></aside><section class="kit-main"><div class="kit-top"><span class="kit-crumb"></span><button type="button" class="kit-theme"></button></div><div class="kit-body"></div></section></div>`;
+    el.style.minHeight = '0';
+    const root = el.querySelector('.kit'), body = el.querySelector('.kit-body'), crumb = el.querySelector('.kit-crumb'), themeBtn = el.querySelector('.kit-theme');
+    const btns = [...el.querySelectorAll('.kit-side button')];
+    let ti = 0, th = 0, phase = 0, userTheme = false; const q = seq();
+    function render() {
+      const t = TOOLS[ti];
+      root.className = 'kit ' + THEMES[th][0];
+      btns.forEach((b, i) => b.classList.toggle('on', i === ti));
+      crumb.innerHTML = `<b>${t.n}</b>${t.cat}`;
+      themeBtn.innerHTML = `${tx('Tema', 'Theme')}: ${THEMES[th][1]} ▾`;
+      body.innerHTML = `<h5>${tx(t.name[0], t.name[1])}</h5>
+        <div class="kit-drop${phase ? ' has' : ''}">${phase ? t.files.map((f) => `<span class="kit-file${phase === 1 ? ' in' : ''}">${tx(f[0], f[1])}${t.lock ? `<small>${phase >= 3 ? tx('libre', 'unlocked') : tx('protegida', 'protected')}</small>` : ''}</span>`).join('') : `<em>↑</em>${tx('Soltá tus archivos acá', 'Drop your files here')}`}</div>
+        <ol class="kit-log">${t.steps.map((s, i) => `<li class="${phase - 1 > i ? 'ok' : phase - 1 === i ? 'run' : ''}">${tx(s[0], s[1])}</li>`).join('')}</ol>
+        <div class="kit-out${phase >= 4 ? ' on' : ''}"><span>✓ ${tx(t.out[0], t.out[1])}</span><b>${tx('Descargar', 'Download')}</b></div>`;
+    }
+    function play() {
+      q.clear(); phase = 0; render();
+      if (RM) { phase = 4; render(); return; }
+      [900, 1600, 2300, 3000].forEach((ms, k) => q.at(ms, () => { phase = k + 1; render(); }));
+      q.at(5800, () => { ti = (ti + 1) % TOOLS.length; if (!ti && !userTheme) th = (th + 1) % THEMES.length; play(); });
+    }
+    btns.forEach((b, i) => b.addEventListener('click', () => { ti = i; play(); }));
+    themeBtn.addEventListener('click', () => { userTheme = true; th = (th + 1) % THEMES.length; render(); });
+    document.addEventListener('langchange', render);
+    return { start: play, stop() { q.clear(); } };
+  };
+
   /* ───────── Conciliador ───────── */
   NOTES.conc = FAKE;
   DEMOS.conc = (el) => {
