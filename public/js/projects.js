@@ -247,6 +247,7 @@ window.PROJECTS = {
   zap: {
     skin: 's-zap', short: ['Zappinglate', 'Zappinglate'],
     kind: ['Web · Privado', 'Web · Private'],
+    live: 'https://zappinglatepal.web.app',
     name: ['Zappinglate', 'Zappinglate'],
     tagline: [
       'Una tele vieja para hacer zapping por videos de YouTube que nadie vio. Cada video que mirás recibe, probablemente, su primera vista.',
