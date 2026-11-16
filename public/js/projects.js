@@ -18,7 +18,7 @@ window.CHAPTERS = [
       'Herramientas internas para equipos de cuentas a pagar y de operaciones de viajes. Las restricciones eran reales: PCs corporativas sin permisos de administrador, sin servidores, sin Node. Los nombres de empresa, de sistemas y los datos quedaron afuera a propósito.',
       'Internal tools for accounts payable and travel operations teams. The constraints were real: locked-down corporate PCs, no servers, no Node. Company names, system names and data are left out on purpose.'
     ],
-    rows: [['conc'], ['batch'], ['sched', 'gantt']]
+    rows: [['split'], ['conc'], ['batch'], ['sched', 'gantt']]
   },
   {
     id: 'productos',
@@ -63,6 +63,27 @@ window.PROJECTS = {
     ],
     stack: ['JavaScript', 'pdf-lib', 'PDF.js', 'JSZip', 'FFmpeg.wasm', 'Python', 'Firebase Hosting'],
     facts: [['16', ['herramientas', 'tools']], ['9', ['temas visuales', 'visual themes']], ['0', ['archivos subidos', 'files uploaded']]]
+  },
+  split: {
+    skin: 's-split', flip: true, short: ['Separador por región', 'Region splitter'],
+    kind: ['Finanzas · Privado', 'Finance · Private'],
+    name: ['Separador por región', 'Region splitter'],
+    tagline: [
+      'Un trabajo de Excel de 8 a 10 horas, ahora en 90 segundos: separa los dos reportes maestros del mes en un archivo por región, con sus fórmulas, reglas de excepción y totales.',
+      'An 8-to-10-hour Excel job, now done in 90 seconds: it splits the month\'s two master reports into one file per region, with their formulas, exception rules and totals.'
+    ],
+    how: [
+      'Antes era filtrar, copiar y pegar región por región, todos los meses, cuidando que ninguna fórmula se rompiera. Ahora es una página offline que se abre con doble clic: se sueltan los dos archivos y sale todo, listo para que cada equipo concilie su región. Es el paso previo al conciliador.',
+      'It used to mean filtering, copying and pasting region by region every month, making sure no formula broke. Now it is an offline page that opens with a double click: drop in the two files and everything comes out, ready for each team to reconcile its region. It is the step before the reconciler.'
+    ],
+    points: [
+      ['<b>Las fórmulas viajan con los datos.</b> Copia cada tramo de filas en orden y reescribe las referencias de cada fórmula a su nueva posición, respetando las referencias absolutas y el texto entre comillas.', '<b>Formulas travel with the data.</b> It copies each run of rows in order and rewrites every formula\'s references to their new position, leaving absolute references and quoted text alone.'],
+      ['<b>Reglas por prioridad, no por orden.</b> Redirigir un proveedor, un prefijo de factura o fusionar varias regiones en un solo archivo: gana siempre la regla más específica, primero proveedor, después prefijo y por último región, sin importar dónde esté en la lista.', '<b>Rules by priority, not by position.</b> Redirect a vendor or an invoice prefix, or merge several regions into one file: the most specific rule always wins, vendor first, then prefix, then region, wherever it sits in the list.'],
+      ['<b>Nada se pierde ni se inventa.</b> Una región desconocida sale en su propio archivo con el nombre tal como está escrito, y queda anotada. El final de los datos se lee de la propia fórmula de suma del archivo, y un control fila por fila avisa si dos tipos de cambio difieren en más de uno.', '<b>Nothing gets lost or made up.</b> An unknown region goes to its own file under the name exactly as written, and is noted in the log. The end of the data is read from the file\'s own SUM formula, and a row-by-row check warns when two exchange rates differ by more than one.'],
+      ['<b>Totales en dos formatos:</b> un texto alineado para mirar en el Bloc de notas y un Excel con sumas vivas. Todo sale en un ZIP armado byte a byte, sin librerías.', '<b>Totals in two formats:</b> aligned plain text to glance at in Notepad, and an Excel file with live sums. Everything ships in a ZIP built byte by byte, with no library.']
+    ],
+    stack: ['JavaScript', 'ExcelJS', 'File System Access API', 'ZIP propio', 'PowerShell (build)'],
+    facts: [['90 s', ['en lugar de 8 a 10 horas', 'instead of 8 to 10 hours']], ['29', ['regiones', 'regions']], ['0', ['instalaciones', 'installs']]]
   },
   conc: {
     skin: 's-conc', short: ['Conciliador', 'Reconciler'],

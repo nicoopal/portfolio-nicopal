@@ -152,6 +152,59 @@
     return { start: play, stop() { q.clear(); } };
   };
 
+  /* ───────── Separador por región ───────── */
+  NOTES.split = ['Datos inventados. El reloj cuenta en tiempo simulado', 'Made-up data. The clock runs in simulated time'];
+  DEMOS.split = (el) => {
+    const OUTS = [['Italy', '#2f7de1'], ['Japan', '#d9483b'], ['Spain', '#e0a020'], ['Brit Isles', '#7a55c8'], ['Turkey, Greece & Croatia', '#1d9a6c']];
+    const SRC = [['ITALY', 0], ['JAPAN', 1], ['CROATIA', 4], ['SPAIN', 2], ['ITALY', 0], ['BRIT ISLES', 3], ['TURKEY, GREECE', 4], ['JAPAN', 1], ['SPAIN', 2], ['CROATIA', 4], ['ITALY', 0], ['BRIT ISLES', 3]];
+    const N = SRC.length;
+    const fmt = (n) => n.toLocaleString(isEn() ? 'en-US' : 'es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const amts = SRC.map(() => 200 + Math.round(Math.random() * 480000) / 100);
+    el.innerHTML = `<div class="spl">
+      <div class="spl-head"><span><b>OFFSETS ALL.xlsx</b> · ${N} ${T('filas', 'rows')}</span><span class="spl-clock tnum">00:00</span></div>
+      <div class="spl-body">
+        <ul class="spl-src">${SRC.map((r, i) => `<li><i style="background:${OUTS[r[1]][1]}"></i><span>${r[0]}</span><b class="tnum">${fmt(amts[i])}</b></li>`).join('')}</ul>
+        <div class="spl-arrow">→</div>
+        <div class="spl-outs">${OUTS.map((o) => `<div class="spl-out"><i style="background:${o[1]}"></i><span>${o[0]}.xlsx</span><b class="tnum">0</b></div>`).join('')}
+          <div class="spl-extra"><span>TOTALS BY REGION.txt</span><span>TOTALS BY REGION.xlsx</span><span>.zip</span></div></div>
+      </div>
+      <div class="spl-rule">${T('Regla', 'Rule')}: CROATIA → Turkey, Greece &amp; Croatia</div>
+      <div class="spl-race">
+        <div class="man"><span>${T('A mano', 'By hand')}</span><div class="bar"><i></i></div><b>8–10 h</b></div>
+        <div class="app"><span>${T('Separador', 'Splitter')}</span><div class="bar"><i></i></div><b class="tnum">90 s</b></div>
+      </div></div>`;
+    el.style.minHeight = '0';
+    const root = el.querySelector('.spl'), rows = [...el.querySelectorAll('.spl-src li')], outs = [...el.querySelectorAll('.spl-out')];
+    const clock = el.querySelector('.spl-clock'), rule = el.querySelector('.spl-rule'), appBar = el.querySelector('.app .bar i');
+    const q = seq(); const counts = OUTS.map(() => 0);
+    const setClock = (s) => { clock.textContent = String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(Math.round(s % 60)).padStart(2, '0'); };
+    function reset() {
+      q.clear(); root.classList.remove('done'); counts.fill(0);
+      rows.forEach((r) => r.classList.remove('go', 'now'));
+      outs.forEach((o) => { o.classList.remove('hit'); o.querySelector('b').textContent = '0'; });
+      rule.classList.remove('on'); appBar.style.width = '0'; setClock(0);
+    }
+    function move(i) {
+      const r = SRC[i], o = outs[r[1]];
+      rows.forEach((x, j) => x.classList.toggle('now', j === i));
+      rows[i].classList.add('go');
+      counts[r[1]]++; o.querySelector('b').textContent = counts[r[1]];
+      o.classList.remove('hit'); void o.offsetWidth; o.classList.add('hit');
+      rule.classList.toggle('on', r[0] === 'CROATIA');
+      setClock(((i + 1) / N) * 90);
+      appBar.style.width = Math.max(0.6, ((i + 1) / N) * 2.8) + '%';
+    }
+    function finish() { rows.forEach((x) => x.classList.remove('now')); rule.classList.remove('on'); root.classList.add('done'); setClock(90); }
+    function run() {
+      reset();
+      if (RM) { SRC.forEach((_, i) => move(i)); finish(); return; }
+      SRC.forEach((_, i) => q.at(700 + i * 430, () => move(i)));
+      q.at(700 + N * 430 + 200, finish);
+      q.at(700 + N * 430 + 4200, run);
+    }
+    return { start: run, stop() { q.clear(); } };
+  };
+
   /* ───────── Conciliador ───────── */
   NOTES.conc = FAKE;
   DEMOS.conc = (el) => {
@@ -181,7 +234,7 @@
     function verdict(w, b) { light.className = 'light ' + (b ? 'nogo' : w ? 'review' : 'go'); light.textContent = b ? 'NO-GO' : w ? 'REVIEW' : 'GO'; }
     function run() {
       q.clear(); rules.forEach((r) => (r.className = 'rule')); light.className = 'light'; light.textContent = '···'; bar.style.width = '0';
-      info.innerHTML = T('Lote', 'Batch') + ' ' + (400 + ((Math.random() * 90) | 0)) + ' · ' + (900 + ((Math.random() * 600) | 0)) + ' ' + T('facturas', 'invoices');
+      info.innerHTML = T('Lote', 'Batch') + ' ' + (400 + ((Math.random() * 90) | 0)) + ' · ' + (10 + ((Math.random() * 91) | 0)) + ' ' + T('facturas', 'invoices');
       let w = 0, b = 0;
       rules.forEach((r, i) => {
         const x = Math.random(), res = x < 0.05 ? 'r-bad' : x < 0.15 ? 'r-warn' : 'r-ok';

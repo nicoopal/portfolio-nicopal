@@ -1,6 +1,6 @@
 # portfolio-nicopal
 
-Portfolio de Nicolás Palermo: 16 proyectos (13 privados) contados por dentro, con miniaturas interactivas dibujadas por código.
+Portfolio de Nicolás Palermo: 17 proyectos (14 privados) contados por dentro, con miniaturas interactivas dibujadas por código.
 
 - **Sitio:** https://portfolio-nicopal.web.app
 - **Repo:** https://github.com/nicoopal/portfolio-nicopal
@@ -14,7 +14,7 @@ Cuatro capítulos, más una tarjeta breve con tres proyectos extra.
 | Capítulo | Proyectos |
 |---|---|
 | El origen | Pals Toolkit, el primer proyecto hecho con IA |
-| En el trabajo | Conciliador de prepagos, Control de lotes de pago, Asignador de guías, Tablero de salidas |
+| En el trabajo | Separador por región, Conciliador de prepagos, Control de lotes de pago, Asignador de guías, Tablero de salidas |
 | Productos | Invisipal, Handpal, Pals Vault, Pals Downloader, Portal de un equipo legislativo |
 | De madrugada | Zappinglate, Libro para colorear, Estudio de moda, Pals Music, murmur, Portal retro para amigos |
 | Y también | Comparador de precios del hogar, Calendario de prepagos, Libro de memorias familiar |

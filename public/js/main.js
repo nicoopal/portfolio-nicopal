@@ -102,7 +102,7 @@
   /* ───── Hero: la frase se escribe sola, trazo a trazo ───── */
   const hw = $('#heroWrite');
   if (hw && window.makeWriter) {
-    const w = window.makeWriter(hw, () => (document.documentElement.lang === 'en' ? '16 projects. 13 private. All explained.' : '16 proyectos. 13 privados. Todos explicados.'), { color: '#d6ff3f', cursor: '#ece6da', cursorEdge: '#0d0c0a', max: 96, pad: 6, speed: 620, lw: 0.05 });
+    const w = window.makeWriter(hw, () => (document.documentElement.lang === 'en' ? '17 projects. 14 private. All explained.' : '17 proyectos. 14 privados. Todos explicados.'), { color: '#d6ff3f', cursor: '#ece6da', cursorEdge: '#0d0c0a', max: 96, pad: 6, speed: 620, lw: 0.05 });
     const go = () => setTimeout(() => w.start(), 500);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(go); else go();
   }
