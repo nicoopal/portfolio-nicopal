@@ -161,7 +161,7 @@
     const fmt = (n) => n.toLocaleString(isEn() ? 'en-US' : 'es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     const amts = SRC.map(() => 200 + Math.round(Math.random() * 480000) / 100);
     el.innerHTML = `<div class="spl">
-      <div class="spl-head"><span><b>OFFSETS ALL.xlsx</b> · ${N} ${T('filas', 'rows')}</span><span class="spl-clock tnum">00:00</span></div>
+      <div class="spl-head"><span><b>${T('Maestro del mes.xlsx', 'Monthly master.xlsx')}</b> · ${N} ${T('partidas', 'line items')}</span><span class="spl-clock tnum">00:00</span></div>
       <div class="spl-body">
         <ul class="spl-src">${SRC.map((r, i) => `<li><i style="background:${OUTS[r[1]][1]}"></i><span>${r[0]}</span><b class="tnum">${fmt(amts[i])}</b></li>`).join('')}</ul>
         <div class="spl-arrow">→</div>

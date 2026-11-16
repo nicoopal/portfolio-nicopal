@@ -69,8 +69,8 @@ window.PROJECTS = {
     kind: ['Finanzas · Privado', 'Finance · Private'],
     name: ['Separador por región', 'Region splitter'],
     tagline: [
-      'Un trabajo de Excel de 8 a 10 horas, ahora en 90 segundos: separa los dos reportes maestros del mes en un archivo por región, con sus fórmulas, reglas de excepción y totales.',
-      'An 8-to-10-hour Excel job, now done in 90 seconds: it splits the month\'s two master reports into one file per region, with their formulas, exception rules and totals.'
+      'Un trabajo de Excel de 8 a 10 horas, ahora en 90 segundos: separa los dos reportes maestros del mes, con más de 7.000 partidas y unas 160 mil celdas, en un archivo por región, con sus fórmulas, reglas de excepción y totales.',
+      'An 8-to-10-hour Excel job, now done in 90 seconds: it splits the month\'s two master reports, with over 7,000 line items and about 160,000 cells, into one file per region, with their formulas, exception rules and totals.'
     ],
     how: [
       'Antes era filtrar, copiar y pegar región por región, todos los meses, cuidando que ninguna fórmula se rompiera. Ahora es una página offline que se abre con doble clic: se sueltan los dos archivos y sale todo, listo para que cada equipo concilie su región. Es el paso previo al conciliador.',
@@ -83,7 +83,7 @@ window.PROJECTS = {
       ['<b>Totales en dos formatos:</b> un texto alineado para mirar en el Bloc de notas y un Excel con sumas vivas. Todo sale en un ZIP armado byte a byte, sin librerías.', '<b>Totals in two formats:</b> aligned plain text to glance at in Notepad, and an Excel file with live sums. Everything ships in a ZIP built byte by byte, with no library.']
     ],
     stack: ['JavaScript', 'ExcelJS', 'File System Access API', 'ZIP propio', 'PowerShell (build)'],
-    facts: [['90 s', ['en lugar de 8 a 10 horas', 'instead of 8 to 10 hours']], ['29', ['regiones', 'regions']], ['0', ['instalaciones', 'installs']]]
+    facts: [['90 s', ['en lugar de 8 a 10 horas', 'instead of 8 to 10 hours']], ['7.197', ['partidas en un mes real', 'line items in a real month']], ['23', ['archivos regionales', 'regional files']]]
   },
   conc: {
     skin: 's-conc', short: ['Conciliador', 'Reconciler'],
