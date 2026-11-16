@@ -327,15 +327,18 @@ window.PROJECTS = {
     live: 'https://pals-music.web.app',
     name: ['Pals Music', 'Pals Music'],
     tagline: [
-      'Una estantería navegable para una colección de unos 3.000 álbumes: portadas, metadata, links a streaming y estadísticas.',
-      'A browsable shelf for a collection of about 3,000 albums: covers, metadata, streaming links and stats.'
+      'Una estantería navegable para una colección de 3.000 álbumes: de cada uno, el artista, el año, los géneros, el país, la calidad de audio y dónde escucharlo, con estadísticas de todo.',
+      'A browsable shelf for a collection of 3,000 albums: for each one, the artist, year, genres, country, audio quality and where to listen, with stats on all of it.'
     ],
     points: [
+      ['<b>Cada álbum tiene su ficha:</b> los temas con su duración y la calidad pista por pista. Dice si está en el disco y en qué formato (MP3, AAC, ALAC o FLAC) o si solo vive en la biblioteca digital de Spotify, como 687 de ellos.', '<b>Every album has its own page:</b> the tracks with their length and quality, track by track. It says whether it is on disk and in which format (MP3, AAC, ALAC or FLAC), or only lives in the Spotify digital library, as 687 of them do.'],
+      ['<b>Dónde escucharlo:</b> links a Spotify, YouTube Music y Bandcamp en 2.450 álbumes, y el reproductor de Spotify dentro de la ficha. Se filtra por género, década y país, o se navega por artista.', '<b>Where to listen:</b> links to Spotify, YouTube Music and Bandcamp on 2,450 albums, and the Spotify player inside the album page. Filter by genre, decade and country, or browse by artist.'],
+      ['<b>Estadísticas con gráficos hechos a mano en SVG:</b> duración de las canciones, álbumes por década, calidad de audio, géneros y países.', '<b>Stats with hand-written SVG charts:</b> song length, albums by decade, audio quality, genres and countries.'],
       ['<b>Mosaico ordenado por color.</b> Ordena por matiz, pero aparta las portadas casi grises y las ordena por luminosidad: el matiz de un gris es arbitrario y ensucia el arcoíris.', '<b>A mosaic sorted by colour.</b> It sorts by hue but sets aside near-grey covers and orders them by lightness: the hue of a grey is arbitrary and muddies the rainbow.'],
       ['<b>Emparejar portadas en dos fases:</b> prefijo exacto primero, coincidencia difusa después, con guardas contra falsos positivos. Si un link no es confiable, guarda vacío.', '<b>Two-phase cover matching:</b> exact prefix first, fuzzy matching second, with guards against false positives. If a link is not trustworthy, it stores nothing.']
     ],
     stack: ['Python', 'Pillow', 'mutagen', 'JavaScript', 'APIs de música'],
-    facts: [[['3.002', '3,002'], ['álbumes', 'albums']], [['37.156', '37,156'], ['pistas', 'tracks']]]
+    facts: [[['3.002', '3,002'], ['álbumes', 'albums']], [['1.456', '1,456'], ['artistas', 'artists']], [['37.156', '37,156'], ['pistas', 'tracks']], ['344', ['géneros', 'genres']]]
   },
   murmur: {
     skin: 's-murmur', short: ['murmur', 'murmur'],
