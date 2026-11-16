@@ -83,7 +83,7 @@ window.PROJECTS = {
       ['<b>Totales en dos formatos:</b> un texto alineado para mirar en el Bloc de notas y un Excel con sumas vivas. Todo sale en un ZIP armado byte a byte, sin librerías.', '<b>Totals in two formats:</b> aligned plain text to glance at in Notepad, and an Excel file with live sums. Everything ships in a ZIP built byte by byte, with no library.']
     ],
     stack: ['JavaScript', 'ExcelJS', 'File System Access API', 'ZIP propio', 'PowerShell (build)'],
-    facts: [['90 s', ['en lugar de 8 a 10 horas', 'instead of 8 to 10 hours']], ['7.197', ['partidas en un mes real', 'line items in a real month']], ['23', ['archivos regionales', 'regional files']]]
+    facts: [[['90 seg', '90 secs'], ['en lugar de 8 a 10 horas', 'instead of 8 to 10 hours']], [['7.000+', '7,000+'], ['partidas por mes', 'line items per month']], ['20+', ['regiones', 'regions']]]
   },
   conc: {
     skin: 's-conc', short: ['Conciliador', 'Reconciler'],
@@ -142,7 +142,7 @@ window.PROJECTS = {
       ['<b>Servicios vinculados como componentes conexas:</b> un DFS agrupa los que van juntos y busca un guía libre para todo el bloque.', '<b>Linked services as connected components:</b> a DFS groups the ones that go together and looks for one guide free for the whole block.']
     ],
     stack: ['JavaScript', 'Firestore', 'SheetJS', 'ExcelJS'],
-    facts: [['16', ['módulos', 'modules']], ['~9.600', ['líneas', 'lines']]]
+    facts: [['16', ['módulos', 'modules']], [['~9.600', '~9,600'], ['líneas', 'lines']]]
   },
   gantt: {
     skin: 's-gantt', half: true, short: ['Tablero de salidas', 'Departures board'],
@@ -284,7 +284,7 @@ window.PROJECTS = {
       ['<b>Entrás al programa ya empezado,</b> como en la tele: cada video arranca en un punto al azar.', '<b>You land mid-programme,</b> like real TV: each video starts at a random point.']
     ],
     stack: ['React', 'Vite', 'YouTube Data API', 'GitHub Actions', 'Firestore'],
-    facts: [['2.376', ['videos sin vistas en el pool', 'unwatched videos in the pool']], ['1', ['cron diario', 'daily cron']]]
+    facts: [[['2.376', '2,376'], ['videos sin vistas en el pool', 'unwatched videos in the pool']], ['1', ['cron diario', 'daily cron']]]
   },
   color: {
     skin: 's-color', flip: true, short: ['Libro para colorear', 'Colouring book'],
@@ -335,7 +335,7 @@ window.PROJECTS = {
       ['<b>Emparejar portadas en dos fases:</b> prefijo exacto primero, coincidencia difusa después, con guardas contra falsos positivos. Si un link no es confiable, guarda vacío.', '<b>Two-phase cover matching:</b> exact prefix first, fuzzy matching second, with guards against false positives. If a link is not trustworthy, it stores nothing.']
     ],
     stack: ['Python', 'Pillow', 'mutagen', 'JavaScript', 'APIs de música'],
-    facts: [['3.002', ['álbumes', 'albums']], ['37.156', ['pistas', 'tracks']]]
+    facts: [[['3.002', '3,002'], ['álbumes', 'albums']], [['37.156', '37,156'], ['pistas', 'tracks']]]
   },
   murmur: {
     skin: 's-murmur', short: ['murmur', 'murmur'],

@@ -17,7 +17,7 @@
       <div class="copy">${meta}${B(p.name, 'h3')}${B(p.tagline, 'p', 'tagline')}${p.how ? B(p.how, 'p', 'how') : ''}
         <ul class="points">${p.points.map((x) => B(x, 'li')).join('')}</ul>
         <ul class="chips">${p.stack.map((s) => `<li>${s}</li>`).join('')}</ul>
-        <div class="facts">${p.facts.map((f) => `<div><b>${f[0]}</b>${B(f[1])}</div>`).join('')}</div>
+        <div class="facts">${p.facts.map((f) => `<div>${Array.isArray(f[0]) ? B(f[0], 'b') : `<b>${f[0]}</b>`}${B(f[1])}</div>`).join('')}</div>
       </div>
       <div class="demo"><div class="stage" data-demo="${id}"></div><div class="demo-note">${window.DEMO_NOTES[id] ? B(window.DEMO_NOTES[id]) : ''}</div></div>
     </article>`;
