@@ -77,9 +77,10 @@ window.PROJECTS = {
       'It opens with a double click: no server, no install. The analyst decides which lines each payment consumes; a deterministic engine does the splits, formulas and two-currency balancing, and an independent checker audits the result.'
     ],
     points: [
+      ['<b>Cubre los casos reales, no solo el feliz.</b> Un pago que consume devengamientos de varios proveedores, un depósito que absorbe el saldo que dejó un prepago parcial, un mismo grupo de devengamientos repartido entre varias facturas, o un cierre directo contra facturas de devengamiento con tope parcial.', '<b>It covers the real cases, not just the happy path.</b> A payment that consumes accruals from several vendors, a deposit that absorbs what a partial prepayment left open, one pool of accruals split across several invoices, or a direct close against accrual invoices with a partial cap.'],
       ['<b>Port celda a celda de Python a JavaScript.</b> Reimplementa el redondeo bancario de CPython para que los centavos coincidan con la versión original, validada contra entregables reales.', '<b>Cell-identical port from Python to JavaScript.</b> It reimplements CPython\'s banker\'s rounding so every cent matches the original version, which was validated against real deliverables.'],
       ['<b>Multiusuario sin backend.</b> Presencia por heartbeat sobre una carpeta sincronizada: cada pestaña escribe su propio archivo cada 20 s y detecta conflictos antes de guardar.', '<b>Multi-user with no backend.</b> Heartbeat presence over a synced folder: each tab writes its own file every 20 s and detects conflicts before saving.'],
-      ['<b>El Excel de salida conserva fórmulas vivas,</b> y solo cuando la fórmula reproduce el valor exacto. El validador recalcula desde las celdas y nunca confía en un resultado cacheado.', '<b>The output workbook keeps live formulas,</b> and only when the formula reproduces the exact value. The checker recomputes from cells and never trusts a cached result.']
+      ['<b>El Excel de salida conserva fórmulas vivas,</b> y solo cuando la fórmula reproduce el valor exacto: el saldo abierto de un devengamiento parcial queda como "original menos lo aplicado". El validador recalcula desde las celdas y nunca confía en un resultado cacheado; si algo no cuadra, marca la línea en vez de entregar el archivo.', '<b>The output workbook keeps live formulas,</b> and only when the formula reproduces the exact value: the open balance of a partial accrual stays as "original minus what was applied". The checker recomputes from cells and never trusts a cached result; if something does not balance, it flags the line instead of delivering the file.']
     ],
     stack: ['JavaScript', 'ExcelJS', 'File System Access API', 'IndexedDB', 'Python (v0)'],
     facts: [['44', ['versiones publicadas', 'releases shipped']], ['17', ['chequeos del validador', 'checker rules']], ['0', ['servidores', 'servers']]]
@@ -109,10 +110,12 @@ window.PROJECTS = {
     kind: ['Operaciones · Privado', 'Operations · Private'],
     name: ['Asignador de guías', 'Guide scheduler'],
     tagline: [
-      'Asigna guías, anfitriones y disertantes a las salidas grupales de una temporada completa, detectando conflictos. Reemplazó a una planilla.',
-      'Assigns guides, hosts and speakers to a full season of group departures while detecting conflicts. It replaced a spreadsheet.'
+      'Asigna guías, disertantes, meetings y cenas en casas de familia a las salidas grupales de una temporada completa, detectando conflictos. Reemplazó a una planilla.',
+      'Assigns guides, speakers, meetings and home-hosted dinners to a full season of group departures while detecting conflicts. It replaced a spreadsheet.'
     ],
     points: [
+      ['<b>Cenas con cupo:</b> cada casa anfitriona tiene un máximo de pasajeros y días disponibles, y un grupo grande se reparte entre varias.', '<b>Dinners with capacity:</b> every host home has a passenger limit and available days, and a large group is split across several.'],
+      ['<b>Cada guía recibe su agenda:</b> un Excel por guía con sus servicios, fechas y bloqueos, listo para mandar por mail. Y un backup completo que se valida antes de restaurarse.', '<b>Every guide gets their schedule:</b> one Excel file per guide with their services, dates and blocked days, ready to email. Plus a full backup that is validated before it is restored.'],
       ['<b>Auto-asignación con restricciones:</b> prioridad del guía, balanceo de carga y chequeo de slots (mañana y tarde conviven, día completo choca con todo).', '<b>Constraint-based auto-assignment:</b> guide priority, load balancing and slot checks (morning and afternoon coexist, full day clashes with everything).'],
       ['<b>Servicios vinculados como componentes conexas:</b> un DFS agrupa los que van juntos y busca un guía libre para todo el bloque.', '<b>Linked services as connected components:</b> a DFS groups the ones that go together and looks for one guide free for the whole block.']
     ],
@@ -124,10 +127,12 @@ window.PROJECTS = {
     kind: ['Operaciones · Privado', 'Operations · Private'],
     name: ['Tablero de salidas', 'Departures board'],
     tagline: [
-      'Dónde está cada grupo de viaje hoy, día por día, a partir de un Excel exportado.',
-      'Where every travel group is today, day by day, from one exported Excel file.'
+      'Dónde está cada grupo de viaje hoy, cuántos pasajeros lleva y quién suma días antes o después del viaje, a partir de un Excel exportado.',
+      'Where every travel group is today, how many passengers it carries and who adds days before or after the trip, from one exported Excel file.'
     ],
     points: [
+      ['<b>Pasajeros y días extra por viaje:</b> cada grupo muestra su cantidad de pasajeros y si tiene extensión previa o posterior, con totales por semana, mes, semestre o región.', '<b>Passengers and extra days per trip:</b> each group shows its passenger count and whether it has a pre- or post-trip extension, with totals by week, month, semester or region.'],
+      ['<b>Exporta lo que estás viendo:</b> el filtro actual sale a Excel o se copia al portapapeles ya ordenado para pegarlo en el sistema siguiente.', '<b>Export what you are looking at:</b> the current filter goes out to Excel or is copied to the clipboard, already laid out to paste into the next system.'],
       ['<b>Ubicación por itinerario:</b> cruza la fecha con el recorrido de cada programa y muestra ciudad y día de viaje.', '<b>Location from itinerary:</b> it crosses the date with each programme\'s route and shows the city and trip day.'],
       ['<b>Un panel de administración que genera código:</b> edita regiones e itinerarios y los serializa a archivos .js. Un CMS sin backend. El Gantt es SVG hecho a mano.', '<b>An admin panel that writes code:</b> it edits regions and itineraries and serialises them back to .js files. A CMS with no backend. The Gantt is hand-written SVG.']
     ],
@@ -222,20 +227,21 @@ window.PROJECTS = {
     kind: ['IA aplicada · Privado', 'Applied AI · Private'],
     name: ['Portal de un equipo legislativo', 'A legislative team portal'],
     tagline: [
-      'Portal privado para un equipo de asesores: la agenda de la semana se extrae de un PDF con IA y los informes se comparten con control de acceso fino.',
-      'A private portal for a team of advisers: the week\'s agenda is extracted from a PDF with AI, and reports are shared under fine-grained access control.'
+      'Portal privado para un equipo de asesores legislativos: informes y análisis de proyectos de ley, seguimiento de comisiones y cuestiones políticas, más una agenda semanal que la IA extrae de un PDF.',
+      'A private portal for a team of legislative advisers: reports and analysis of bills, committee tracking and political briefings, plus a weekly agenda that AI extracts from a PDF.'
     ],
     how: [
       'Alguien arrastra el PDF oficial; una función en la nube lo manda al modelo con un esquema estricto y guarda la agenda estructurada. La clave de la API nunca llega al navegador.',
       'Someone drops in the official PDF; a cloud function sends it to the model with a strict schema and stores the structured agenda. The API key never reaches the browser.'
     ],
     points: [
+      ['<b>Análisis, no solo agenda.</b> Informes sobre proyectos de ley, carpetas de debate, informes de comisión con lo que dijo cada expositor, dossiers y un vademécum de datos y citas. Todo cerrado al equipo, con cuatro niveles de permiso.', '<b>Analysis, not just an agenda.</b> Reports on bills, debate briefs, committee reports with what each speaker said, dossiers and a handbook of facts and quotes. All closed to the team, with four permission levels.'],
       ['<b>El HTML público no contiene nada.</b> Cada informe son dos archivos: un cascarón que solo sabe autenticar y el contenido, guardado aparte y protegido por reglas que cruzan dos servicios.', '<b>The public HTML contains nothing.</b> Each report is two files: a shell that only knows how to authenticate, and the content, stored separately and guarded by rules that span two services.'],
       ['<b>Accesos externos que vencen a los 15 días,</b> sin links reutilizables: la función entrega el contenido directo a la sesión validada.', '<b>External access that expires after 15 days,</b> with no reusable links: the function hands the content straight to the validated session.'],
       ['<b>Marca de agua por lector:</b> email y hora en mosaico diagonal. Documentada como disuasión y trazabilidad, no como DRM.', '<b>A per-reader watermark:</b> email and time tiled diagonally. Documented as deterrence and traceability, not DRM.']
     ],
     stack: ['JavaScript', 'Firebase Auth', 'Firestore', 'Storage', 'Cloud Functions', 'Gemini 2.5 Flash'],
-    facts: [['4', ['niveles de permiso', 'permission levels']], ['15', ['informes publicados', 'reports published']], ['2', ['Cloud Functions', 'Cloud Functions']]]
+    facts: [['4', ['niveles de permiso', 'permission levels']], ['13', ['informes publicados', 'reports published']], ['2', ['Cloud Functions', 'Cloud Functions']]]
   },
   zap: {
     skin: 's-zap', short: ['Zappinglate', 'Zappinglate'],
@@ -295,6 +301,7 @@ window.PROJECTS = {
   music: {
     skin: 's-music', half: true, short: ['Pals Music', 'Pals Music'],
     kind: ['Datos · Privado', 'Data · Private'],
+    live: 'https://pals-music.web.app',
     name: ['Pals Music', 'Pals Music'],
     tagline: [
       'Una estantería navegable para una colección de unos 3.000 álbumes: portadas, metadata, links a streaming y estadísticas.',

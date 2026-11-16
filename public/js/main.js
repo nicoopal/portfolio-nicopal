@@ -9,7 +9,7 @@
   function panel(id) {
     const p = P[id];
     const cls = ['panel', p.skin, p.half ? 'half' : '', p.flip ? 'flip' : ''].join(' ');
-    const meta = `<div class="meta">${B(p.kind)}${p.link ? `<a href="${p.link}" target="_blank" rel="noopener">${B(['Código abierto ↗', 'Open source ↗'])}</a>` : ''}${p.live ? `<a href="${p.live}" target="_blank" rel="noopener">${B(['Probalo en vivo ↗', 'Try it live ↗'])}</a>` : ''}</div>`;
+    const meta = `<div class="meta">${B(p.kind)}${p.link ? `<a href="${p.link}" target="_blank" rel="noopener">${B(['Código abierto ↗', 'Open source ↗'])}</a>` : ''}${p.live ? `<a href="${p.live}" target="_blank" rel="noopener">${B(['Verlo en vivo ↗', 'See it live ↗'])}</a>` : ''}</div>`;
     if (p.also) {
       return `<article class="${cls}" id="p-${id}"><div class="copy">${meta}<div class="also">${p.also.map((a) => `<article>${B(a[0], 'h4')}${B(a[1], 'p')}</article>`).join('')}</div></div></article>`;
     }
