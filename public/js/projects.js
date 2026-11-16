@@ -83,7 +83,7 @@ window.PROJECTS = {
       ['<b>Totales en dos formatos:</b> un texto alineado para mirar en el Bloc de notas y un Excel con sumas vivas. Todo sale en un ZIP armado byte a byte, sin librerías.', '<b>Totals in two formats:</b> aligned plain text to glance at in Notepad, and an Excel file with live sums. Everything ships in a ZIP built byte by byte, with no library.']
     ],
     stack: ['JavaScript', 'ExcelJS', 'File System Access API', 'ZIP propio', 'PowerShell (build)'],
-    facts: [[['90 seg', '90 secs'], ['en lugar de 8 a 10 horas', 'instead of 8 to 10 hours']], [['7.000+', '7,000+'], ['partidas por mes', 'line items per month']], ['20+', ['regiones', 'regions']]]
+    facts: [[['90 seg', '90 secs'], ['en lugar de 8 a 10 horas', 'instead of 8 to 10 hours']], [['~7.000+', '~7,000+'], ['filas por mes', 'lines per month']], ['20+', ['regiones', 'regions']]]
   },
   conc: {
     skin: 's-conc', short: ['Conciliador', 'Reconciler'],
